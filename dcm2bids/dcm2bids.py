@@ -12,6 +12,7 @@ import platform
 import sys
 from datetime import datetime
 from glob import glob
+import shutil # maureen added to copy instead of move files
 
 from dcm2bids.dcm2niix import Dcm2niix
 from dcm2bids.logger import setup_logging
@@ -26,38 +27,34 @@ class Dcm2bids(object):
     """ Object to handle dcm2bids execution steps
 
     Args:
-        dicom_dir (str or list): A list of folder with dicoms to convert
+        nii_dir (str): A list of folder with niis to convert
         participant (str): Label of your participant
         config (path): Path to a dcm2bids configuration file
         output_dir (path): Path to the BIDS base folder
         session (str): Optional label of a session
         clobber (boolean): Overwrite file if already in BIDS folder
-        forceDcm2niix (boolean): Forces a cleaning of a previous execution of
-                                 dcm2niix
         log_level (str): logging level
     """
 
     def __init__(
         self,
-        dicom_dir,
+        nii_dir,
         participant,
         config,
         output_dir=DEFAULT.outputDir,
         session=DEFAULT.session,
         clobber=DEFAULT.clobber,
-        forceDcm2niix=DEFAULT.forceDcm2niix,
         log_level=DEFAULT.logLevel,
         **_
     ):
-        self._dicomDirs = []
-
-        self.dicomDirs = dicom_dir
+		
+        self.niiDir = valid_path(nii_dir, type="folder")
         self.bidsDir = valid_path(output_dir, type="folder")
         self.config = load_json(valid_path(config, type="file"))
         self.participant = Participant(participant, session)
         self.clobber = clobber
-        self.forceDcm2niix = forceDcm2niix
         self.logLevel = log_level
+
 
         # logging setup
         self.set_logger()
@@ -72,19 +69,6 @@ class Dcm2bids(object):
         self.logger.info("config: %s", os.path.realpath(config))
         self.logger.info("BIDS directory: %s", os.path.realpath(output_dir))
 
-    @property
-    def dicomDirs(self):
-        """List of DICOMs directories"""
-        return self._dicomDirs
-
-    @dicomDirs.setter
-    def dicomDirs(self, value):
-
-        dicom_dirs = value if isinstance(value, list) else [value]
-
-        valid_dirs = [valid_path(_dir, "folder") for _dir in dicom_dirs]
-
-        self._dicomDirs = valid_dirs
 
     def set_logger(self):
         """ Set a basic logger"""
@@ -97,22 +81,14 @@ class Dcm2bids(object):
 
     def run(self):
         """Run dcm2bids"""
-        dcm2niix = Dcm2niix(
-            self.dicomDirs,
-            self.bidsDir,
-            self.participant,
-            self.config.get("dcm2niixOptions", DEFAULT.dcm2niixOptions),
-        )
+        sidecarFiles = Path(str(self.niiDir)).rglob('*.json')
 
-        check_latest()
-        check_latest("dcm2niix")
-
-        dcm2niix.run(self.forceDcm2niix)
 
         sidecars = []
-        for filename in dcm2niix.sidecarFiles:
+        for filename in sidecarFiles:
+            print(filename)
             sidecars.append(
-                Sidecar(filename, self.config.get("compKeys", DEFAULT.compKeys))
+                Sidecar(str(filename), self.config.get("compKeys", DEFAULT.compKeys))
             )
 
         sidecars = sorted(sidecars)
@@ -180,11 +156,12 @@ class Dcm2bids(object):
                 data = acquisition.dstSidecarData(self.config["descriptions"],
                                                   intendedForList)
                 save_json(dstFile, data)
-                os.remove(srcFile)
+#                 os.remove(srcFile)
 
             # just move
             else:
-                os.rename(srcFile, dstFile)
+#                 os.rename(srcFile, dstFile)
+                shutil.copyfile(srcFile, dstFile)
 
             intendedFile = acquisition.dstIntendedFor + ".nii.gz"
             if intendedFile not in intendedForList[acquisition.indexSidecar]:
@@ -197,8 +174,9 @@ def _build_arg_parser():
     p = argparse.ArgumentParser(description=__doc__, epilog=DEFAULT.EPILOG,
                                 formatter_class=argparse.RawTextHelpFormatter)
 
-    p.add_argument("-d", "--dicom_dir",
-                   type=Path, required=True, nargs="+",
+    p.add_argument("-d", "--nii_dir",
+                   type=Path, 
+                   required=True, 
                    help="DICOM directory(ies).")
 
     p.add_argument("-p", "--participant",
@@ -220,11 +198,6 @@ def _build_arg_parser():
                    type=Path,
                    default=Path.cwd(),
                    help="Output BIDS directory. (Default: %(default)s)")
-
-    p.add_argument("--forceDcm2niix",
-                   action="store_true",
-                   help="Overwrite previous temporary dcm2niix "
-                        "output if it exists.")
 
     p.add_argument("--clobber",
                    action="store_true",
