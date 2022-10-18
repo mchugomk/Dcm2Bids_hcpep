@@ -1,0 +1,178 @@
+{
+    "descriptions": [
+        {
+            "dataType": "anat",
+            "modalityLabel": "T1w",
+            "criteria": {
+                "SeriesDescription": "T1w_MPR",
+                "ImageType": [ "ORIGINAL","PRIMARY","M","ND"]
+            }
+        },
+        {
+            "dataType": "anat",
+            "modalityLabel": "T1w",
+            "customLabels": "acq-norm",
+            "criteria": {
+                "SeriesDescription": "T1w_MPR",
+                "ImageType": [ "ORIGINAL","PRIMARY","M","ND","NORM"]
+            }
+        },
+        {
+            "dataType": "anat",
+            "modalityLabel": "T2w",
+            "criteria": {
+                "SeriesDescription": "T2w_SPC"   ,
+                "ImageType": [ "ORIGINAL","PRIMARY","M","ND"]  
+            }
+        },
+        {
+            "dataType": "anat",
+            "modalityLabel": "T2w",
+            "customLabels": "acq-norm",
+            "criteria": {
+                "SeriesDescription": "T2w_SPC"   ,
+                "ImageType": [ "ORIGINAL","PRIMARY","M","ND","NORM"]  
+            }
+        },
+		{
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "task-rest_dir-ap_run-01",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_AP",
+                "SidecarFilename": "*rfMRI_REST1_AP.json",
+                "PhaseEncodingDirection": "j-"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "rest"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "task-rest_dir-pa_run-01",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_PA",
+                "SidecarFilename": "*rfMRI_REST1_PA.json",
+                "PhaseEncodingDirection": "j"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "rest"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "task-rest_dir-ap_run-02",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_AP",
+                "SidecarFilename": "*rfMRI_REST2_AP.json",
+                "PhaseEncodingDirection": "j-"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "rest"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "task-rest_dir-pa_run-02",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_PA",
+                "SidecarFilename": "*rfMRI_REST2_PA.json",
+                "PhaseEncodingDirection": "j"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "rest"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "sbref",
+            "customLabels": "task-rest_dir-ap_run-01",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_AP_SBRef",
+                "SidecarFilename": "*REST1_AP_SBRef*"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "sbref"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "sbref",
+            "customLabels": "task-rest_dir-pa_run-01",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_PA_SBRef",
+                "SidecarFilename": "*REST1_PA_SBRef*"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "sbref"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "sbref",
+            "customLabels": "task-rest_dir-ap_run-02",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_AP_SBRef",
+                "SidecarFilename": "*REST2_AP_SBRef*"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "sbref"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "sbref",
+            "customLabels": "task-rest_dir-pa_run-02",
+            "criteria": {
+                "SeriesDescription": "rfMRI_REST_PA_SBRef",
+                "SidecarFilename": "*REST2_PA_SBRef*"
+            },
+            "sidecarChanges": {
+                "SeriesDescription": "sbref"
+            }
+        },
+		{
+            "dataType": "fmap",
+            "modalityLabel": "epi",
+            "customLabels": "acq-01_dir-ap_run-01",
+            "criteria": {
+            	"SeriesDescription": "SpinEchoFieldMap_AP",
+                "SidecarFilename": "*SpinEchoFieldMap1_AP*"
+            },
+            "IntendedFor": 4
+        },
+        {
+            "dataType": "fmap",
+            "modalityLabel": "epi",
+            "customLabels": "acq-02_dir-ap_run-02",
+            "criteria": {
+            	"SeriesDescription": "SpinEchoFieldMap_AP",
+                "SidecarFilename": "*SpinEchoFieldMap2_AP*"
+            },
+            "IntendedFor": 6
+        },
+        {
+            "dataType": "fmap",
+            "modalityLabel": "epi",
+            "customLabels": "acq-01_dir-pa_run-01",
+            "criteria": {
+            	"SeriesDescription": "SpinEchoFieldMap_PA",
+                "SidecarFilename": "*SpinEchoFieldMap1_PA*"
+            },
+            "IntendedFor": 5
+        },
+		{
+            "dataType": "fmap",
+            "modalityLabel": "epi",
+            "customLabels": "acq-02_dir-pa_run-02",
+            "criteria": {
+            	"SeriesDescription": "SpinEchoFieldMap_PA",
+                "SidecarFilename": "*SpinEchoFieldMap2_PA*"
+            },
+            "IntendedFor": 7
+        }
+    ]
+}
