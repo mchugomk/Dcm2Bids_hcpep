@@ -4,7 +4,7 @@
             "dataType": "anat",
             "modalityLabel": "T1w",
             "criteria": {
-                "SeriesDescription": "T1w_MPR",
+                "SeriesDescription": "*T1w_MPR",
                 "ImageType": [ "ORIGINAL","PRIMARY","M","ND"]
             }
         },
@@ -13,7 +13,7 @@
             "modalityLabel": "T1w",
             "customLabels": "acq-norm",
             "criteria": {
-                "SeriesDescription": "T1w_MPR",
+                "SeriesDescription": "*T1w_MPR",
                 "ImageType": [ "ORIGINAL","PRIMARY","M","ND","NORM"]
             }
         },
@@ -44,7 +44,8 @@
                 "PhaseEncodingDirection": "j-"
             },
             "sidecarChanges": {
-                "SeriesDescription": "rest"
+                "SeriesDescription": "rest",
+                "TaskName" : "rest"
             }
         },
         {
@@ -57,7 +58,8 @@
                 "PhaseEncodingDirection": "j"
             },
             "sidecarChanges": {
-                "SeriesDescription": "rest"
+                "SeriesDescription": "rest",
+                "TaskName" : "rest"
             }
         },
         {
@@ -70,7 +72,8 @@
                 "PhaseEncodingDirection": "j-"
             },
             "sidecarChanges": {
-                "SeriesDescription": "rest"
+                "SeriesDescription": "rest",
+                "TaskName" : "rest"
             }
         },
         {
@@ -83,7 +86,8 @@
                 "PhaseEncodingDirection": "j"
             },
             "sidecarChanges": {
-                "SeriesDescription": "rest"
+                "SeriesDescription": "rest",
+                "TaskName" : "rest"
             }
         },
         {
