@@ -146,7 +146,10 @@
             	"SeriesDescription": "SpinEchoFieldMap_AP",
                 "SidecarFilename": "*SpinEchoFieldMap1_AP*"
             },
-            "IntendedFor": 4
+            "IntendedFor": [4,5],
+            "sidecarChanges": {
+				"B0FieldIdentifier": "pepolar1"
+			}
         },
         {
             "dataType": "fmap",
@@ -156,7 +159,10 @@
             	"SeriesDescription": "SpinEchoFieldMap_AP",
                 "SidecarFilename": "*SpinEchoFieldMap2_AP*"
             },
-            "IntendedFor": 6
+            "IntendedFor": [6,7],
+            "sidecarChanges": {
+				"B0FieldIdentifier": "pepolar2"
+			}
         },
         {
             "dataType": "fmap",
@@ -166,7 +172,10 @@
             	"SeriesDescription": "SpinEchoFieldMap_PA",
                 "SidecarFilename": "*SpinEchoFieldMap1_PA*"
             },
-            "IntendedFor": 5
+            "IntendedFor": [4,5],
+            "sidecarChanges": {
+				"B0FieldIdentifier": "pepolar1"
+			}
         },
 		{
             "dataType": "fmap",
@@ -176,7 +185,10 @@
             	"SeriesDescription": "SpinEchoFieldMap_PA",
                 "SidecarFilename": "*SpinEchoFieldMap2_PA*"
             },
-            "IntendedFor": 7
+            "IntendedFor": [6,7],
+            "sidecarChanges": {
+				"B0FieldIdentifier": "pepolar2"
+			}
         }
     ]
 }
