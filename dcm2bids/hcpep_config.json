@@ -45,7 +45,8 @@
             },
             "sidecarChanges": {
                 "SeriesDescription": "rest",
-                "TaskName" : "rest"
+                "TaskName" : "rest",
+                "B0FieldSource": "pepolar1"
             }
         },
         {
@@ -59,7 +60,8 @@
             },
             "sidecarChanges": {
                 "SeriesDescription": "rest",
-                "TaskName" : "rest"
+                "TaskName" : "rest",
+                "B0FieldSource": "pepolar1"
             }
         },
         {
@@ -73,7 +75,8 @@
             },
             "sidecarChanges": {
                 "SeriesDescription": "rest",
-                "TaskName" : "rest"
+                "TaskName" : "rest",
+                "B0FieldSource": "pepolar2"
             }
         },
         {
@@ -87,7 +90,8 @@
             },
             "sidecarChanges": {
                 "SeriesDescription": "rest",
-                "TaskName" : "rest"
+                "TaskName" : "rest",
+                "B0FieldSource": "pepolar2"
             }
         },
         {
